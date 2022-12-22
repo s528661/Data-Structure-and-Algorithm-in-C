@@ -39,6 +39,18 @@ void append( struct node* head, int x ){
   }
 }
 
+void countList( struct node* head ) {
+    struct node* p;
+    int count = 0;
+
+    p = head->next;
+    while(p != NULL){
+        p = p->next;
+        count++;
+    }
+    printf("%d\n", count);
+}
+
 /* 実験 4 で作成 */
 void delete( struct node* head ) {
   /* 内容は自分で作る */  
@@ -47,9 +59,7 @@ void delete( struct node* head ) {
 
   if(head != NULL){
     if(head->next == NULL){
-        p = head->next;
-        free(head);
-        head = p;
+        printf("*** エラー： リストは空です ***");
     }else{
         p = head;
         while(p->next != NULL){
@@ -58,11 +68,8 @@ void delete( struct node* head ) {
         }
         q->next = NULL;
         free(p);
-        p = NULL;
         head = q;
     }
-  }else{
-    printf("*** エラー： リストは空です ***");
   }
 }
 
